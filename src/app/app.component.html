@@ -1,0 +1,24 @@
+<div>
+  <a class="title" href="/">{{ title }}</a>
+
+  <div class="toolbar-spacer"></div>
+
+  <a [routerLink]="['profile']">Profile</a>
+
+  <button *ngIf="!loginDisplay">Login</button>
+  <div>
+    <button (click)="loginRedirect()">Login using Redirect</button>
+    <button (click)="loginPopup()">Login using Popup</button>
+  </div>
+
+  <button *ngIf="loginDisplay">Logout</button>
+  <div>
+    <button (click)="logout()">Logout using Redirect</button>
+    <button (click)="logout(true)">Logout using Popup</button>
+  </div>
+
+</div>
+<div class="container">
+  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+  <router-outlet *ngIf="!isIframe"></router-outlet>
+</div>
